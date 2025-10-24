@@ -15,23 +15,23 @@ const ChatMessage = ({ message }: ChatMessageProps) => {
   const isUser = message.role === "user";
 
   return (
-    <div className={`flex gap-3 ${isUser ? "flex-row-reverse" : "flex-row"} items-start animate-fade-in`}>
-      <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${
-        isUser ? "bg-primary" : "bg-accent"
+    <div className={`flex gap-4 ${isUser ? "flex-row-reverse" : "flex-row"} items-start animate-fade-in`}>
+      <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl shadow-medium ${
+        isUser ? "gradient-accent" : "bg-card border-2 border-primary"
       }`}>
         {isUser ? (
-          <User className="h-5 w-5 text-primary-foreground" />
+          <User className="h-5 w-5 text-white" />
         ) : (
-          <Bot className="h-5 w-5 text-accent-foreground" />
+          <Bot className="h-5 w-5 text-primary" />
         )}
       </div>
       
-      <div className={`rounded-2xl px-6 py-3 max-w-[80%] ${
+      <div className={`rounded-3xl px-6 py-4 max-w-[75%] ${
         isUser 
-          ? "bg-primary text-primary-foreground rounded-tr-sm" 
-          : "bg-secondary text-secondary-foreground rounded-tl-sm"
+          ? "gradient-accent text-white rounded-tr-md shadow-glow" 
+          : "bg-card border-2 border-primary/20 text-foreground rounded-tl-md shadow-soft"
       }`}>
-        <p className="text-sm leading-relaxed">{message.content}</p>
+        <p className="text-base leading-relaxed">{message.content}</p>
       </div>
     </div>
   );

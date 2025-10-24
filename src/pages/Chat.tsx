@@ -52,20 +52,20 @@ const Chat = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex">
+    <div className="min-h-[calc(100vh-4rem)] flex bg-gradient-to-br from-background to-secondary/20">
       {/* Chat Panel */}
-      <div className="flex-1 flex flex-col bg-background">
-        <div className="flex-1 overflow-y-auto p-6 space-y-4">
+      <div className="flex-1 flex flex-col">
+        <div className="flex-1 overflow-y-auto p-6 space-y-6">
           {messages.map((message) => (
             <ChatMessage key={message.id} message={message} />
           ))}
           {isTyping && (
-            <div className="flex gap-2 items-start">
-              <div className="bg-secondary rounded-2xl rounded-tl-sm px-6 py-3 max-w-[80%]">
-                <div className="flex gap-1">
-                  <div className="h-2 w-2 rounded-full bg-muted-foreground animate-bounce"></div>
-                  <div className="h-2 w-2 rounded-full bg-muted-foreground animate-bounce [animation-delay:0.2s]"></div>
-                  <div className="h-2 w-2 rounded-full bg-muted-foreground animate-bounce [animation-delay:0.4s]"></div>
+            <div className="flex gap-3 items-start animate-fade-in">
+              <div className="bg-card border-2 border-primary/20 rounded-3xl rounded-tl-md px-6 py-4 max-w-[80%] shadow-soft">
+                <div className="flex gap-1.5">
+                  <div className="h-2.5 w-2.5 rounded-full bg-primary animate-bounce"></div>
+                  <div className="h-2.5 w-2.5 rounded-full bg-primary animate-bounce [animation-delay:0.2s]"></div>
+                  <div className="h-2.5 w-2.5 rounded-full bg-primary animate-bounce [animation-delay:0.4s]"></div>
                 </div>
               </div>
             </div>
@@ -73,9 +73,13 @@ const Chat = () => {
         </div>
 
         {/* Input Area */}
-        <div className="border-t border-border p-4 bg-card">
-          <div className="flex gap-2 max-w-4xl mx-auto">
-            <Button variant="ghost" size="icon" className="shrink-0">
+        <div className="border-t-2 border-border/50 p-6 bg-card/80 backdrop-blur-sm">
+          <div className="flex gap-3 max-w-4xl mx-auto">
+            <Button 
+              variant="outline" 
+              size="icon" 
+              className="shrink-0 h-12 w-12 rounded-2xl border-2 hover:border-primary hover:bg-primary/10"
+            >
               <Paperclip className="h-5 w-5" />
             </Button>
             <Input
@@ -83,11 +87,11 @@ const Chat = () => {
               onChange={(e) => setInputMessage(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
               placeholder="Type your message..."
-              className="flex-1"
+              className="flex-1 h-12 rounded-2xl border-2 px-5 text-base focus:border-primary"
             />
             <Button 
               onClick={handleSendMessage}
-              className="gradient-primary shrink-0"
+              className="gradient-accent shrink-0 h-12 w-12 rounded-2xl shadow-glow hover:scale-105 transition-transform"
               size="icon"
             >
               <Send className="h-5 w-5" />
@@ -97,7 +101,7 @@ const Chat = () => {
       </div>
 
       {/* Resume Preview Panel */}
-      <div className="hidden lg:block w-[500px] border-l border-border bg-secondary/30">
+      <div className="hidden lg:block w-[500px] border-l-2 border-border/50 bg-gradient-to-br from-card to-secondary/30">
         <ResumePreview />
       </div>
     </div>

@@ -1,135 +1,163 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, Zap, FileCheck } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, FileCheck, Star } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero-illustration.jpg";
+import { useLanguage } from "@/contexts/LanguageContext";
+import heroImage from "@/assets/hero-orange.jpg";
 
 const Landing = () => {
+  const { t } = useLanguage();
+  
   return (
-    <div className="min-h-screen gradient-hero">
-      {/* Hero Section */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-32">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8 animate-fade-in">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
-              <Sparkles className="h-4 w-4" />
-              AI-Powered Resume Builder
+    <div className="min-h-screen">
+      {/* Hero Section with Orange Gradient Background */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-background via-secondary/30 to-background">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(251,113,33,0.1),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(234,88,12,0.1),transparent_50%)]"></div>
+        
+        <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8 animate-slide-up">
+              <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold shadow-glow">
+                <Sparkles className="h-4 w-4" />
+                {t("aiPowered")} Resume Builder
+              </div>
+              
+              <h1 className="text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight">
+                {t("heroTitle").split("AI")[0]}
+                <span className="gradient-primary bg-clip-text text-transparent">
+                  AI
+                </span>
+              </h1>
+              
+              <p className="text-xl text-muted-foreground max-w-xl leading-relaxed">
+                {t("heroDescription")}
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Link to="/chat">
+                  <Button size="lg" className="gradient-accent text-white gap-2 shadow-glow hover:scale-105 transition-transform text-lg px-8 py-6">
+                    {t("startBuilding")}
+                    <ArrowRight className="h-5 w-5" />
+                  </Button>
+                </Link>
+                <Link to="/templates">
+                  <Button size="lg" variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground text-lg px-8 py-6">
+                    View Templates
+                  </Button>
+                </Link>
+              </div>
+              
+              <div className="flex items-center gap-12 pt-8">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 fill-primary text-primary" />
+                    ))}
+                  </div>
+                  <div className="text-sm text-muted-foreground">15k+ Happy Users</div>
+                </div>
+                <div className="h-12 w-px bg-border"></div>
+                <div className="space-y-1">
+                  <div className="text-3xl font-bold gradient-primary bg-clip-text text-transparent">3 min</div>
+                  <div className="text-sm text-muted-foreground">Average Build Time</div>
+                </div>
+              </div>
             </div>
             
-            <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
-              Create Your Professional Resume in{" "}
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Minutes with AI
-              </span>
-            </h1>
-            
-            <p className="text-lg text-muted-foreground max-w-xl">
-              Chat with our AI assistant to build a stunning resume. No templates to fill out, 
-              just natural conversation that creates professional results.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/chat">
-                <Button size="lg" className="gradient-primary text-primary-foreground gap-2 shadow-medium hover:shadow-lg transition-all">
-                  Start Building
-                  <ArrowRight className="h-5 w-5" />
-                </Button>
-              </Link>
-              <Link to="/templates">
-                <Button size="lg" variant="outline">
-                  View Templates
-                </Button>
-              </Link>
-            </div>
-            
-            <div className="flex items-center gap-8 pt-4">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-foreground">10k+</div>
-                <div className="text-sm text-muted-foreground">Resumes Created</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-foreground">4.9/5</div>
-                <div className="text-sm text-muted-foreground">User Rating</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-foreground">5 min</div>
-                <div className="text-sm text-muted-foreground">Average Time</div>
+            <div className="relative lg:block hidden">
+              <div className="absolute -top-10 -right-10 h-80 w-80 bg-primary/20 rounded-full blur-3xl animate-pulse-slow"></div>
+              <div className="absolute -bottom-10 -left-10 h-80 w-80 bg-accent/20 rounded-full blur-3xl animate-pulse-slow"></div>
+              <div className="relative">
+                <img 
+                  src={heroImage}
+                  alt="AI Resume Builder" 
+                  className="relative rounded-3xl shadow-glow w-full border-4 border-primary/20 animate-float"
+                />
               </div>
             </div>
-          </div>
-          
-          <div className="relative animate-fade-in">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl blur-3xl animate-pulse-slow"></div>
-            <img 
-              src={heroImage}
-              alt="AI Resume Builder Illustration" 
-              className="relative rounded-3xl shadow-medium w-full animate-float"
-            />
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-            Why Choose ResumeAI?
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Building a resume has never been this easy and intuitive
-          </p>
-        </div>
-        
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-card rounded-2xl p-8 shadow-soft hover:shadow-medium transition-all border border-border">
-            <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-              <Sparkles className="h-6 w-6 text-primary" />
+      {/* Features Section with Cards */}
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <div className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
+              {t("featuresTitle")}
             </div>
-            <h3 className="text-xl font-semibold mb-3">AI-Powered</h3>
-            <p className="text-muted-foreground">
-              Our intelligent AI guides you through every step, asking the right questions 
-              to highlight your best qualities.
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+              Build Smarter, <span className="gradient-primary bg-clip-text text-transparent">Not Harder</span>
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Experience the future of resume building with cutting-edge AI technology
             </p>
           </div>
           
-          <div className="bg-card rounded-2xl p-8 shadow-soft hover:shadow-medium transition-all border border-border">
-            <div className="h-12 w-12 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
-              <Zap className="h-6 w-6 text-accent" />
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="group relative bg-gradient-to-br from-card to-card/50 rounded-3xl p-10 shadow-soft hover:shadow-glow transition-all border-2 border-border hover:border-primary/50">
+              <div className="absolute top-0 right-0 h-24 w-24 bg-primary/10 rounded-bl-[100px] rounded-tr-3xl"></div>
+              <div className="relative">
+                <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-6 shadow-medium group-hover:scale-110 transition-transform">
+                  <Sparkles className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{t("aiPowered")}</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {t("aiPoweredDesc")}
+                </p>
+              </div>
             </div>
-            <h3 className="text-xl font-semibold mb-3">Lightning Fast</h3>
-            <p className="text-muted-foreground">
-              Create a professional resume in under 5 minutes. See changes in real-time 
-              as you chat with the AI.
-            </p>
-          </div>
-          
-          <div className="bg-card rounded-2xl p-8 shadow-soft hover:shadow-medium transition-all border border-border">
-            <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-              <FileCheck className="h-6 w-6 text-primary" />
+            
+            <div className="group relative bg-gradient-to-br from-card to-card/50 rounded-3xl p-10 shadow-soft hover:shadow-glow transition-all border-2 border-border hover:border-primary/50">
+              <div className="absolute top-0 right-0 h-24 w-24 bg-accent/10 rounded-bl-[100px] rounded-tr-3xl"></div>
+              <div className="relative">
+                <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-accent to-primary flex items-center justify-center mb-6 shadow-medium group-hover:scale-110 transition-transform">
+                  <Zap className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{t("instantPreview")}</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {t("instantPreviewDesc")}
+                </p>
+              </div>
             </div>
-            <h3 className="text-xl font-semibold mb-3">Professional Results</h3>
-            <p className="text-muted-foreground">
-              Download your resume as a polished PDF ready to impress employers 
-              and land your dream job.
-            </p>
+            
+            <div className="group relative bg-gradient-to-br from-card to-card/50 rounded-3xl p-10 shadow-soft hover:shadow-glow transition-all border-2 border-border hover:border-primary/50">
+              <div className="absolute top-0 right-0 h-24 w-24 bg-primary/10 rounded-bl-[100px] rounded-tr-3xl"></div>
+              <div className="relative">
+                <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-6 shadow-medium group-hover:scale-110 transition-transform">
+                  <FileCheck className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{t("professionalTemplates")}</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {t("professionalTemplatesDesc")}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="bg-gradient-to-r from-primary to-accent rounded-3xl p-12 text-center text-primary-foreground shadow-medium">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-            Ready to Build Your Future?
-          </h2>
-          <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-            Join thousands of job seekers who've created winning resumes with ResumeAI
-          </p>
-          <Link to="/chat">
-            <Button size="lg" variant="secondary" className="gap-2">
-              Get Started Now
-              <ArrowRight className="h-5 w-5" />
-            </Button>
-          </Link>
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 gradient-accent opacity-10"></div>
+        <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="gradient-accent rounded-[2rem] p-16 text-center text-white shadow-glow relative overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_70%)]"></div>
+            <div className="relative">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                {t("readyToStart")}
+              </h2>
+              <p className="text-xl mb-10 opacity-95 max-w-3xl mx-auto leading-relaxed">
+                Join 15,000+ professionals who landed their dream jobs with AI-powered resumes
+              </p>
+              <Link to="/chat">
+                <Button size="lg" className="bg-white text-primary hover:bg-white/90 gap-2 shadow-lg text-lg px-10 py-7 hover:scale-105 transition-transform">
+                  {t("getStarted")}
+                  <ArrowRight className="h-6 w-6" />
+                </Button>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </div>
