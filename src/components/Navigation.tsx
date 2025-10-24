@@ -1,9 +1,15 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { FileText, Home, LayoutTemplate, User } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
+import { FileText, Home, LayoutTemplate, User, Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navigation = () => {
   const location = useLocation();
+  const { theme, setTheme } = useTheme();
+  const { language, setLanguage, t } = useLanguage();
   
   const isActive = (path: string) => location.pathname === path;
   
@@ -27,7 +33,7 @@ const Navigation = () => {
                 className="gap-2"
               >
                 <Home className="h-4 w-4" />
-                Home
+                {t("home")}
               </Button>
             </Link>
             <Link to="/chat">
@@ -36,7 +42,7 @@ const Navigation = () => {
                 className="gap-2"
               >
                 <FileText className="h-4 w-4" />
-                Chat
+                {t("chat")}
               </Button>
             </Link>
             <Link to="/templates">
@@ -45,14 +51,33 @@ const Navigation = () => {
                 className="gap-2"
               >
                 <LayoutTemplate className="h-4 w-4" />
-                Templates
+                {t("templates")}
               </Button>
             </Link>
           </div>
           
-          <Button variant="ghost" size="icon" className="rounded-full">
-            <User className="h-5 w-5" />
-          </Button>
+          <div className="flex items-center gap-4">
+            <div className="hidden sm:flex items-center gap-2">
+              {theme === "dark" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+              <Switch 
+                checked={theme === "dark"}
+                onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
+              />
+              <Label className="text-sm">{t("darkMode")}</Label>
+            </div>
+            
+            <div className="hidden sm:flex items-center gap-2">
+              <Switch 
+                checked={language === "ar"}
+                onCheckedChange={(checked) => setLanguage(checked ? "ar" : "en")}
+              />
+              <Label className="text-sm">{t("language")}</Label>
+            </div>
+            
+            <Button variant="ghost" size="icon" className="rounded-full">
+              <User className="h-5 w-5" />
+            </Button>
+          </div>
         </div>
       </div>
     </nav>
