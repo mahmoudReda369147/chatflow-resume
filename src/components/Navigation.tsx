@@ -57,15 +57,6 @@ const Navigation = () => {
                 {t("templates")}
               </Button>
             </Link>
-            <Link to="/profile">
-              <Button 
-                variant={isActive("/profile") ? "secondary" : "ghost"}
-                className="gap-2"
-              >
-                <User className="h-4 w-4" />
-                Profile
-              </Button>
-            </Link>
           </div>
           
           <div className="flex items-center gap-4">
@@ -128,16 +119,6 @@ const Navigation = () => {
                     >
                       <LayoutTemplate className="h-5 w-5" />
                       {t("templates")}
-                    </Button>
-                  </Link>
-                  
-                  <Link to="/profile" onClick={() => setMobileMenuOpen(false)}>
-                    <Button 
-                      variant={isActive("/profile") ? "default" : "ghost"}
-                      className="w-full justify-start gap-2"
-                    >
-                      <User className="h-5 w-5" />
-                      Profile
                     </Button>
                   </Link>
                   
