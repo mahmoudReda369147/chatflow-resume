@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import Landing from "./pages/Landing";
 import Chat from "./pages/Chat";
 import Templates from "./pages/Templates";
+import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
               <Route path="/" element={<Landing />} />
               <Route path="/chat" element={<Chat />} />
               <Route path="/templates" element={<Templates />} />
+              <Route path="/auth" element={<Auth />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
