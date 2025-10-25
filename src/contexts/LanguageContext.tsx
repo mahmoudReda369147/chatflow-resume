@@ -27,6 +27,7 @@ const translations = {
     professionalTemplatesDesc: "Choose from expertly designed resume layouts",
     readyToStart: "Ready to Create Your Resume?",
     getStarted: "Get Started Now",
+    login: "Login",
   },
   ar: {
     home: "الرئيسية",
@@ -46,6 +47,7 @@ const translations = {
     professionalTemplatesDesc: "اختر من تصميمات السيرة الذاتية المصممة بخبرة",
     readyToStart: "هل أنت مستعد لإنشاء سيرتك الذاتية؟",
     getStarted: "ابدأ الآن",
+    login: "تسجيل الدخول",
   },
 };
 

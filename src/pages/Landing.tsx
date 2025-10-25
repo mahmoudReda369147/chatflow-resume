@@ -137,6 +137,136 @@ const Landing = () => {
         </div>
       </section>
 
+      {/* Pricing Section */}
+      <section id="pricing" className="py-24 bg-gradient-to-br from-secondary/30 to-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
+              Pricing Plans
+            </div>
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+              Choose Your <span className="gradient-primary bg-clip-text text-transparent">Perfect Plan</span>
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Start free and upgrade anytime to unlock premium features
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Free Plan */}
+            <div className="bg-card rounded-3xl p-8 border-2 border-border shadow-soft hover:shadow-medium transition-all">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold mb-2">Free</h3>
+                <div className="flex items-baseline justify-center gap-1">
+                  <span className="text-5xl font-bold">$0</span>
+                  <span className="text-muted-foreground">/month</span>
+                </div>
+              </div>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center gap-3">
+                  <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center">
+                    <div className="h-2 w-2 rounded-full bg-primary"></div>
+                  </div>
+                  <span className="text-muted-foreground">1 Resume</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center">
+                    <div className="h-2 w-2 rounded-full bg-primary"></div>
+                  </div>
+                  <span className="text-muted-foreground">Basic Templates</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center">
+                    <div className="h-2 w-2 rounded-full bg-primary"></div>
+                  </div>
+                  <span className="text-muted-foreground">PDF Export</span>
+                </li>
+              </ul>
+              <Button variant="outline" className="w-full border-2">Get Started</Button>
+            </div>
+
+            {/* Pro Plan */}
+            <div className="bg-gradient-to-br from-primary to-accent rounded-3xl p-8 shadow-glow transform scale-105 relative">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-primary px-4 py-1 rounded-full text-sm font-semibold">
+                Most Popular
+              </div>
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold text-white mb-2">Pro</h3>
+                <div className="flex items-baseline justify-center gap-1">
+                  <span className="text-5xl font-bold text-white">$9</span>
+                  <span className="text-white/80">/month</span>
+                </div>
+              </div>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center gap-3">
+                  <div className="h-5 w-5 rounded-full bg-white/30 flex items-center justify-center">
+                    <div className="h-2 w-2 rounded-full bg-white"></div>
+                  </div>
+                  <span className="text-white">Unlimited Resumes</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="h-5 w-5 rounded-full bg-white/30 flex items-center justify-center">
+                    <div className="h-2 w-2 rounded-full bg-white"></div>
+                  </div>
+                  <span className="text-white">Premium Templates</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="h-5 w-5 rounded-full bg-white/30 flex items-center justify-center">
+                    <div className="h-2 w-2 rounded-full bg-white"></div>
+                  </div>
+                  <span className="text-white">AI Suggestions</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="h-5 w-5 rounded-full bg-white/30 flex items-center justify-center">
+                    <div className="h-2 w-2 rounded-full bg-white"></div>
+                  </div>
+                  <span className="text-white">Priority Support</span>
+                </li>
+              </ul>
+              <Button className="w-full bg-white text-primary hover:bg-white/90">Get Pro</Button>
+            </div>
+
+            {/* Enterprise Plan */}
+            <div className="bg-card rounded-3xl p-8 border-2 border-border shadow-soft hover:shadow-medium transition-all">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold mb-2">Enterprise</h3>
+                <div className="flex items-baseline justify-center gap-1">
+                  <span className="text-5xl font-bold">$29</span>
+                  <span className="text-muted-foreground">/month</span>
+                </div>
+              </div>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center gap-3">
+                  <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center">
+                    <div className="h-2 w-2 rounded-full bg-primary"></div>
+                  </div>
+                  <span className="text-muted-foreground">Everything in Pro</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center">
+                    <div className="h-2 w-2 rounded-full bg-primary"></div>
+                  </div>
+                  <span className="text-muted-foreground">Team Collaboration</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center">
+                    <div className="h-2 w-2 rounded-full bg-primary"></div>
+                  </div>
+                  <span className="text-muted-foreground">Custom Branding</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center">
+                    <div className="h-2 w-2 rounded-full bg-primary"></div>
+                  </div>
+                  <span className="text-muted-foreground">Dedicated Support</span>
+                </li>
+              </ul>
+              <Button variant="outline" className="w-full border-2">Contact Sales</Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 gradient-accent opacity-10"></div>
