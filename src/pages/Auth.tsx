@@ -1,19 +1,23 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { toast } from "sonner";
+import { useLogin, useRegister } from "@/api/auth/authHooks";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const navigate = useNavigate();
   const { t } = useLanguage();
+  
+  // Use authentication hooks
+  const login = useLogin();
+  const register = useRegister();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,9 +27,13 @@ const Auth = () => {
       return;
     }
 
-    // Simulate auth (no backend)
-    toast.success(isLogin ? "Logged in successfully!" : "Account created successfully!");
-    setTimeout(() => navigate("/chat"), 1000);
+    if (isLogin) {
+      // Login user
+      login.mutate({ email, password });
+    } else {
+      // Register user
+      register.mutate({ name, email, password });
+    }
   };
 
   return (
@@ -45,6 +53,21 @@ const Auth = () => {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
+            {!isLogin && (
+              <div className="space-y-2">
+                <Label htmlFor="name">Name</Label>
+                <Input
+                  id="name"
+                  type="text"
+                  placeholder="John Doe"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  className="border-primary/20 focus:border-primary"
+                />
+              </div>
+            )}
+            
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input

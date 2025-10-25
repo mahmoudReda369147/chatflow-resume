@@ -19,14 +19,11 @@ const Landing = () => {
             <div className="space-y-8 animate-slide-up">
               <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold shadow-glow">
                 <Sparkles className="h-4 w-4" />
-                {t("aiPowered")} Resume Builder
+                {t("aiPowered")} {t("resumeBuilder")}
               </div>
               
-              <h1 className="text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight">
-                {t("heroTitle").split("AI")[0]}
-                <span className="gradient-primary bg-clip-text text-transparent">
-                  AI
-                </span>
+              <h1  className="text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight">
+                {t("heroTitle")}
               </h1>
               
               <p className="text-xl text-muted-foreground max-w-xl leading-relaxed">
@@ -35,14 +32,14 @@ const Landing = () => {
               
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Link to="/chat">
-                  <Button size="lg" className="gradient-accent text-white gap-2 shadow-glow hover:scale-105 transition-transform text-lg px-8 py-6">
+                  <Button dir="ltr" size="lg" className="gradient-accent text-white gap-2 shadow-glow hover:scale-105 transition-transform text-lg px-8 py-6">
                     {t("startBuilding")}
                     <ArrowRight className="h-5 w-5" />
                   </Button>
                 </Link>
                 <Link to="/templates">
                   <Button size="lg" variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground text-lg px-8 py-6">
-                    View Templates
+                    {t("viewTemplates")}
                   </Button>
                 </Link>
               </div>
@@ -54,12 +51,12 @@ const Landing = () => {
                       <Star key={i} className="h-5 w-5 fill-primary text-primary" />
                     ))}
                   </div>
-                  <div className="text-sm text-muted-foreground">15k+ Happy Users</div>
+                  <div className="text-sm text-muted-foreground">{t("happyUsers")}</div>
                 </div>
                 <div className="h-12 w-px bg-border"></div>
                 <div className="space-y-1">
-                  <div className="text-3xl font-bold gradient-primary bg-clip-text text-transparent">3 min</div>
-                  <div className="text-sm text-muted-foreground">Average Build Time</div>
+                  <div style={{ backgroundImage: "var(--gradient-primary)" }} className="text-3xl font-bold  bg-clip-text text-transparent">{t("threeMin")}</div>
+                  <div className="text-sm text-muted-foreground">{t("avgBuildTime")}</div>
                 </div>
               </div>
             </div>
@@ -87,10 +84,10 @@ const Landing = () => {
               {t("featuresTitle")}
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-              Build Smarter, <span className="gradient-primary bg-clip-text text-transparent">Not Harder</span>
+              {t("buildSmarterNotHarder")}
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Experience the future of resume building with cutting-edge AI technology
+              {t("featuresSubtitle")}
             </p>
           </div>
           
@@ -142,13 +139,13 @@ const Landing = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
-              Pricing Plans
+              {t("pricingPlans")}
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-              Choose Your <span className="gradient-primary bg-clip-text text-transparent">Perfect Plan</span>
+              {t("choosePerfectPlan")}
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Start free and upgrade anytime to unlock premium features
+              {t("startFreeSubtitle")}
             </p>
           </div>
 
@@ -156,10 +153,10 @@ const Landing = () => {
             {/* Free Plan */}
             <div className="bg-card rounded-3xl p-8 border-2 border-border shadow-soft hover:shadow-medium transition-all">
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold mb-2">Free</h3>
+                <h3 className="text-2xl font-bold mb-2">{t("free")}</h3>
                 <div className="flex items-baseline justify-center gap-1">
                   <span className="text-5xl font-bold">$0</span>
-                  <span className="text-muted-foreground">/month</span>
+                  <span className="text-muted-foreground">{t("perMonth")}</span>
                 </div>
               </div>
               <ul className="space-y-4 mb-8">
@@ -167,34 +164,34 @@ const Landing = () => {
                   <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center">
                     <div className="h-2 w-2 rounded-full bg-primary"></div>
                   </div>
-                  <span className="text-muted-foreground">1 Resume</span>
+                  <span className="text-muted-foreground">{t("resumes1")}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center">
                     <div className="h-2 w-2 rounded-full bg-primary"></div>
                   </div>
-                  <span className="text-muted-foreground">Basic Templates</span>
+                  <span className="text-muted-foreground">{t("basicTemplates")}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center">
                     <div className="h-2 w-2 rounded-full bg-primary"></div>
                   </div>
-                  <span className="text-muted-foreground">PDF Export</span>
+                  <span className="text-muted-foreground">{t("pdfExport")}</span>
                 </li>
               </ul>
-              <Button variant="outline" className="w-full border-2">Get Started</Button>
+              <Button variant="outline" className="w-full border-2">{t("getStartedCta")}</Button>
             </div>
 
             {/* Pro Plan */}
             <div className="bg-gradient-to-br from-primary to-accent rounded-3xl p-8 shadow-glow transform scale-105 relative">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-primary px-4 py-1 rounded-full text-sm font-semibold">
-                Most Popular
+                {t("mostPopular")}
               </div>
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-white mb-2">Pro</h3>
+                <h3 className="text-2xl font-bold text-white mb-2">{t("pro")}</h3>
                 <div className="flex items-baseline justify-center gap-1">
                   <span className="text-5xl font-bold text-white">$9</span>
-                  <span className="text-white/80">/month</span>
+                  <span className="text-white/80">{t("perMonth")}</span>
                 </div>
               </div>
               <ul className="space-y-4 mb-8">
@@ -202,37 +199,37 @@ const Landing = () => {
                   <div className="h-5 w-5 rounded-full bg-white/30 flex items-center justify-center">
                     <div className="h-2 w-2 rounded-full bg-white"></div>
                   </div>
-                  <span className="text-white">Unlimited Resumes</span>
+                  <span className="text-white">{t("unlimitedResumes")}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="h-5 w-5 rounded-full bg-white/30 flex items-center justify-center">
                     <div className="h-2 w-2 rounded-full bg-white"></div>
                   </div>
-                  <span className="text-white">Premium Templates</span>
+                  <span className="text-white">{t("premiumTemplates")}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="h-5 w-5 rounded-full bg-white/30 flex items-center justify-center">
                     <div className="h-2 w-2 rounded-full bg-white"></div>
                   </div>
-                  <span className="text-white">AI Suggestions</span>
+                  <span className="text-white">{t("aiSuggestions")}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="h-5 w-5 rounded-full bg-white/30 flex items-center justify-center">
                     <div className="h-2 w-2 rounded-full bg-white"></div>
                   </div>
-                  <span className="text-white">Priority Support</span>
+                  <span className="text-white">{t("prioritySupport")}</span>
                 </li>
               </ul>
-              <Button className="w-full bg-white text-primary hover:bg-white/90">Get Pro</Button>
+              <Button className="w-full bg-white text-primary hover:bg-white/90">{t("getPro")}</Button>
             </div>
 
             {/* Enterprise Plan */}
             <div className="bg-card rounded-3xl p-8 border-2 border-border shadow-soft hover:shadow-medium transition-all">
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold mb-2">Enterprise</h3>
+                <h3 className="text-2xl font-bold mb-2">{t("enterprise")}</h3>
                 <div className="flex items-baseline justify-center gap-1">
                   <span className="text-5xl font-bold">$29</span>
-                  <span className="text-muted-foreground">/month</span>
+                  <span className="text-muted-foreground">{t("perMonth")}</span>
                 </div>
               </div>
               <ul className="space-y-4 mb-8">
@@ -240,28 +237,28 @@ const Landing = () => {
                   <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center">
                     <div className="h-2 w-2 rounded-full bg-primary"></div>
                   </div>
-                  <span className="text-muted-foreground">Everything in Pro</span>
+                  <span className="text-muted-foreground">{t("everythingInPro")}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center">
                     <div className="h-2 w-2 rounded-full bg-primary"></div>
                   </div>
-                  <span className="text-muted-foreground">Team Collaboration</span>
+                  <span className="text-muted-foreground">{t("teamCollaboration")}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center">
                     <div className="h-2 w-2 rounded-full bg-primary"></div>
                   </div>
-                  <span className="text-muted-foreground">Custom Branding</span>
+                  <span className="text-muted-foreground">{t("customBranding")}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center">
                     <div className="h-2 w-2 rounded-full bg-primary"></div>
                   </div>
-                  <span className="text-muted-foreground">Dedicated Support</span>
+                  <span className="text-muted-foreground">{t("dedicatedSupport")}</span>
                 </li>
               </ul>
-              <Button variant="outline" className="w-full border-2">Contact Sales</Button>
+              <Button variant="outline" className="w-full border-2">{t("contactSales")}</Button>
             </div>
           </div>
         </div>
@@ -278,10 +275,10 @@ const Landing = () => {
                 {t("readyToStart")}
               </h2>
               <p className="text-xl mb-10 opacity-95 max-w-3xl mx-auto leading-relaxed">
-                Join 15,000+ professionals who landed their dream jobs with AI-powered resumes
+                {t("joinCtaSubtitle")}
               </p>
               <Link to="/chat">
-                <Button size="lg" className="bg-white text-primary hover:bg-white/90 gap-2 shadow-lg text-lg px-10 py-7 hover:scale-105 transition-transform">
+                <Button size="lg" dir="ltr" className="bg-white text-primary hover:bg-white/90 gap-2 shadow-lg text-lg px-10 py-7 hover:scale-105 transition-transform ">
                   {t("getStarted")}
                   <ArrowRight className="h-6 w-6" />
                 </Button>

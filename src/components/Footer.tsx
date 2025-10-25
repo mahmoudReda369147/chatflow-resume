@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { FileText, Twitter, Github, Linkedin, Mail } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
+  const { t } = useLanguage();
   return (
     <footer className="border-t-2 border-border bg-card">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -12,12 +14,12 @@ const Footer = () => {
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary">
                 <FileText className="h-6 w-6 text-primary-foreground" />
               </div>
-              <span className="text-xl font-bold gradient-primary bg-clip-text text-transparent">
+              <span style={{ backgroundImage: "var(--gradient-primary)" }} className="text-xl font-bold  bg-clip-text text-transparent">
                 ResumeAI
               </span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Build professional resumes with AI-powered technology in minutes.
+              {t("buildProfessionalResumes")}
             </p>
             <div className="flex gap-3">
               <a href="#" className="h-9 w-9 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground flex items-center justify-center transition-colors">
@@ -37,26 +39,26 @@ const Footer = () => {
 
           {/* Product */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Product</h3>
+            <h3 className="font-semibold text-lg mb-4">{t("product")}</h3>
             <ul className="space-y-3">
               <li>
                 <Link to="/chat" className="text-muted-foreground hover:text-primary transition-colors">
-                  Resume Builder
+                  {t("resumeBuilder")}
                 </Link>
               </li>
               <li>
                 <Link to="/templates" className="text-muted-foreground hover:text-primary transition-colors">
-                  Templates
+                  {t("templates")}
                 </Link>
               </li>
               <li>
                 <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors">
-                  Pricing
+                  {t("pricing")}
                 </a>
               </li>
               <li>
                 <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Features
+                  {t("features")}
                 </a>
               </li>
             </ul>
@@ -64,26 +66,26 @@ const Footer = () => {
 
           {/* Company */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Company</h3>
+            <h3 className="font-semibold text-lg mb-4">{t("company")}</h3>
             <ul className="space-y-3">
               <li>
                 <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  About Us
+                  {t("aboutUs")}
                 </a>
               </li>
               <li>
                 <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Blog
+                  {t("blog")}
                 </a>
               </li>
               <li>
                 <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Careers
+                  {t("careers")}
                 </a>
               </li>
               <li>
                 <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Contact
+                  {t("contact")}
                 </a>
               </li>
             </ul>
@@ -91,26 +93,26 @@ const Footer = () => {
 
           {/* Legal */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Legal</h3>
+            <h3 className="font-semibold text-lg mb-4">{t("legal")}</h3>
             <ul className="space-y-3">
               <li>
                 <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Privacy Policy
+                  {t("privacyPolicy")}
                 </a>
               </li>
               <li>
                 <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Terms of Service
+                  {t("termsOfService")}
                 </a>
               </li>
               <li>
                 <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Cookie Policy
+                  {t("cookiePolicy")}
                 </a>
               </li>
               <li>
                 <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Disclaimer
+                  {t("disclaimer")}
                 </a>
               </li>
             </ul>
@@ -118,7 +120,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 pt-8 border-t border-border text-center text-muted-foreground text-sm">
-          <p>© {new Date().getFullYear()} ResumeAI. All rights reserved.</p>
+          <p> {new Date().getFullYear()} ResumeAI. {t("rightsReserved")}</p>
         </div>
       </div>
     </footer>

@@ -1,54 +1,74 @@
 import { Button } from "@/components/ui/button";
-import { Download, Edit } from "lucide-react";
+import { Globe } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-const ResumePreview = () => {
+interface GeneratedResume {
+  pdfUrl?: string;
+  htmlCode?: string;
+}
+
+interface ResumePreviewProps {
+  generatedResume: GeneratedResume | null;
+}
+
+const ResumePreview = ({ generatedResume }: ResumePreviewProps) => {
+  const { t } = useLanguage();
+  const handleDownload = () => {
+    if (generatedResume?.pdfUrl) {
+      window.open(generatedResume.pdfUrl, '_blank');
+    }
+  };
   return (
     <div className="h-full flex flex-col">
       <div className="p-6 border-b-2 border-border/50 bg-card/80 backdrop-blur-sm">
         <div className="flex items-center justify-between mb-2">
-          <h3 className="font-bold text-lg">Live Preview</h3>
+          <h3 className="font-bold text-lg">{t("livePreview")}</h3>
           <div className="flex gap-2">
             <Button 
-              variant="outline" 
               size="sm" 
-              className="gap-2 border-2 rounded-xl hover:border-primary hover:bg-primary/10"
+              onClick={handleDownload}
+              dir="ltr"
+              disabled={!generatedResume?.pdfUrl}
+              className="gap-2 gradient-accent shadow-glow rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <Edit className="h-4 w-4" />
-              Edit
-            </Button>
-            <Button 
-              size="sm" 
-              className="gap-2 gradient-accent shadow-glow rounded-xl"
-            >
-              <Download className="h-4 w-4" />
-              Download PDF
+              <Globe className="h-4 w-4" />
+              {t("downloadPdf")}
             </Button>
           </div>
         </div>
       </div>
       
       <div className="flex-1 overflow-y-auto p-6 bg-gradient-to-br from-secondary/20 to-background">
-        <div className="bg-white rounded-2xl shadow-medium p-10 min-h-[800px] text-gray-900 border-2 border-primary/10">
-          {/* Resume Template Preview */}
-          <div className="space-y-8">
+        {generatedResume?.pdfUrl ? (
+          <div className="bg-white rounded-2xl shadow-medium overflow-hidden min-h-[550px] border-2 border-primary/10">
+            <iframe 
+              src={generatedResume.pdfUrl} 
+              className="w-full h-full min-h-[550px]"
+              title={t("resumePreviewTitle")}
+            />
+          </div>
+        ) : (
+          <div className="bg-white rounded-2xl shadow-medium p-10 min-h-[550px] text-gray-900 border-2 border-primary/10">
+            {/* Resume Template Preview */}
+            <div className="space-y-8">
             <div className="text-center border-b-2 border-primary/20 pb-6">
               <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
-                Your Name
+                {t("yourName")}
               </h1>
-              <p className="text-gray-700 mt-2 font-semibold text-lg">Professional Title</p>
-              <p className="text-sm text-gray-600 mt-3">email@example.com | (123) 456-7890 | City, State</p>
+              <p className="text-gray-700 mt-2 font-semibold text-lg">{t("professionalTitle")}</p>
+              <p className="text-sm text-gray-600 mt-3">{t("contactPlaceholder")}</p>
             </div>
             
             <div>
               <h2 className="text-2xl font-bold text-gray-900 border-b-2 border-orange-500 pb-3 mb-4">
-                Professional Summary
+                {t("professionalSummary")}
               </h2>
               <p className="text-gray-700 leading-relaxed">
-                Your professional summary will appear here as you provide information to the AI assistant.
+                {t("professionalSummaryDesc")}
               </p>
             </div>
             
-            <div>
+            {/* <div>
               <h2 className="text-2xl font-bold text-gray-900 border-b-2 border-orange-500 pb-3 mb-4">
                 Work Experience
               </h2>
@@ -91,9 +111,10 @@ const ResumePreview = () => {
                   Skill 3
                 </span>
               </div>
-            </div>
+            </div> */}
           </div>
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
